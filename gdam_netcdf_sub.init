@@ -1,12 +1,12 @@
 #! /bin/sh
 ### BEGIN INIT INFO
-# Provides:          GSPS NetCDF Subscriber
+# Provides:          GDAM NetCDF Subscriber
 # Required-Start:    $remote_fs $syslog
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # Short-Description: Teledyne Webb Glider Singleton Publishing Service NetCDF Subscriber
-# Description:       Subscribes to a publish feed from GSPS.  When a new dataset is published, it produces a NetCDF file in a specified directory.
+# Description:       Subscribes to a publish feed from GDAM.  When a new dataset is published, it produces a NetCDF file in a specified directory.
 
 ### END INIT INFO
 
@@ -16,8 +16,8 @@
 
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
 PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin
-DESC="Teledyne Webb Glider Singleton Publishing Service NetCDF Subscriber"
-NAME=gsps_netcdf_sub
+DESC="Teledyne Webb Glider Database Alternative with Mongo NetCDF Subscriber"
+NAME=gdam_netcdf_sub
 USER=localuser
 DAEMON=/usr/local/bin/$NAME.py
 PIDFILE=/var/run/$NAME/$NAME.pid
