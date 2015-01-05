@@ -59,10 +59,16 @@ class GliderDataset(object):
     """Represents a complete glider dataset
     """
 
-    def __init__(self, handler_dataset):
-        self.glider = handler_dataset['glider']
-        self.segment = handler_dataset['segment']
-        self.headers = handler_dataset['headers']
+    def __init__(self, message):
+        self.glider = message['glider']
+        self.segment = message['segment']
+        self.headers = message['headers']
+
+        self.times = []
+        self.data_by_type = {}
+        for header in self.headers:
+            self.data_by_type[header] = []
+
         self.__parse_lines(handler_dataset['lines'])
         self.__interpolate_glider_gps()
         self.__calculate_salinity_and_density()
@@ -101,6 +107,15 @@ class GliderDataset(object):
             )
             self.data_by_type['salinity-psu'] = density_dataset[:, 7]
             self.data_by_type['density-kg/m^3'] = density_dataset[:, 9]
+
+    def parse_line(self, line):
+        self.times.append(line['timestamp'])
+        for key in self.data_by_type.keys():
+            if key in line:
+                datum = line[key]
+            else:
+                datum = NC_FILL_VALUES['f8']
+            self.data_by_type[key].append(datum)
 
     def __parse_lines(self, lines):
         self.time_uv = NC_FILL_VALUES['f8']
@@ -148,8 +163,8 @@ class GliderDataset(object):
         self.data_by_type['lon_uv-lon'] = [dataset[i, 2]]
 
 
-def write_netcdf(configs, sets, set_key):
-    dataset = GliderDataset(sets[set_key])
+def write_segment_netcdf(configs, message):
+    dataset = GliderDataset(message)
 
     # No longer need the dataset stored by handlers
     del sets[set_key]
@@ -261,13 +276,6 @@ def handle_set_end(configs, sets, message):
     )
 
 
-message_handlers = {
-    'set_start': handle_set_start,
-    'set_data': handle_set_data,
-    'set_end': handle_set_end
-}
-
-
 def load_configs(configs_directory):
     configs = {}
 
@@ -311,9 +319,7 @@ def run_subscriber(configs):
     while True:
         try:
             message = socket.recv_json()
-            if message['message_type'] in message_handlers:
-                message_type = message['message_type']
-                message_handlers[message_type](configs, sets, message)
+            write_segment_netcdf(message)
         except Exception, e:
             logger.error("Subscriber exited: %s" % (e))
             break
@@ -354,6 +360,11 @@ def main():
         default="./gsps_netcdf_sub.pid"
     )
     parser.add_argument(
+        "--mongodb_url",
+        default="mongodb://localhost/GDAM",
+        help="URL for Mongo DB Connection"
+    )
+    parser.add_argument(
         "output_directory",
         help="Where to place the newly generated netCDF file.",
         default=False
@@ -383,6 +394,7 @@ def main():
     configs['output_directory'] = output_directory
 
     configs['zmq_url'] = args.zmq_url
+    configs['mongodb_url'] = args.mongodb_url
 
     if args.daemonize:
         logger.info('Starting')

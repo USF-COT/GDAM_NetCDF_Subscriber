@@ -7,6 +7,9 @@
             "axis": "Z",
             "units": "meters",
             "standard_name": "altitude",
+            "accuracy": " ",
+            "precision": " ",
+            "resolution": " ",
             "valid_min": 0,
             "valid_max": 2000,
             "long_name": "Altitude",
@@ -15,7 +18,8 @@
             "observation_type": "calculated",
             "platform": "platform",
             "instrument": "instrument_altimeter",
-            "sensor_name": " "
+            "sensor_name": " ",
+            "comment": ""
         }
     },
     "m_present_time-timestamp": {
@@ -29,6 +33,9 @@
             "axis": "Z",
             "units": "meters",
             "standard_name": "depth",
+            "accuracy": " ",
+            "precision": " ",
+            "resolution": " ",
             "valid_min": 0,
             "valid_max": 2000,
             "long_name": "Depth",
@@ -37,7 +44,8 @@
             "observation_type": "calculated",
             "platform": "platform",
             "instrument": "instrument_ctd",
-            "sensor_name": " "
+            "sensor_name": " ",
+            "comment": ""
         },
         "status_flag": {
             "attrs": {
@@ -56,10 +64,13 @@
             "observation_type": "calculated",
             "platform": "platform",
             "instrument": "instrument_compass",
+            "sensor_name": " ",
             "accuracy": " ",
             "precision": " ",
             "resolution": " ",
-            "sensor_name": " "
+            "comment": "",
+            "valid_min": -180,
+            "valid_max": 180
         },
         "status_flag": {
             "attrs": {
@@ -101,7 +112,10 @@
             "comment": "No values are interpolated.  These are all from glider surfacing gps fixes.",
             "sensor_name": " ",
             "reference": "WGS84",
-            "coordinate_reference_frame": "urn:ogc:crs:EPSG::4326"
+            "coordinate_reference_frame": "urn:ogc:crs:EPSG::4326",
+            "accuracy": " ",
+            "precision": " ",
+            "resolution": " "
         },
         "status_flag": {
             "attrs": {
@@ -125,7 +139,10 @@
             "comment": "Teledyne calculated position output by the glider.",
             "sensor_name": " ",
             "reference": "WGS84",
-            "coordinate_reference_frame": "urn:ogc:crs:EPSG::4326"
+            "coordinate_reference_frame": "urn:ogc:crs:EPSG::4326",
+            "accuracy": " ",
+            "precision": " ",
+            "resolution": " "
         },
         "status_flag": {
             "attrs": {
@@ -149,7 +166,10 @@
             "comment": "Latitude as a result of linear interpolation between surfacing fixes",
             "sensor_name": " ",
             "reference": "WGS84",
-            "coordinate_reference_frame": "urn:ogc:crs:EPSG::4326"
+            "coordinate_reference_frame": "urn:ogc:crs:EPSG::4326",
+            "accuracy": " ",
+            "precision": " ",
+            "resolution": " "
         },
         "status_flag": {
             "attrs": {
@@ -170,7 +190,11 @@
             "observation_type": "calculated",
             "platform": "platform",
             "sensor_name": " ",
-            "coordinates": "longitude_estimate latitude_estimate time"
+            "coordinates": "longitude_estimate latitude_estimate time",
+            "accuracy": " ",
+            "precision": " ",
+            "resolution": " ",
+            "comment": ""
         },
         "status_flag": {
             "attrs": {
@@ -191,7 +215,11 @@
             "observation_type": "calculated",
             "platform": "platform",
             "sensor_name": " ",
-            "coordinates": "longitude_estimate latitude_estimate time"
+            "coordinates": "longitude_estimate latitude_estimate time",
+            "accuracy": " ",
+            "precision": " ",
+            "resolution": " ",
+            "comment": ""
         },
         "status_flag": {
             "attrs": {
@@ -215,7 +243,8 @@
             "accuracy": " ",
             "precision": " ",
             "resolution": " ",
-            "sensor_name": " "
+            "sensor_name": " ",
+            "comment": ""
         },
         "status_flag": {
             "attrs": {
@@ -239,7 +268,10 @@
             "comment": "Teledyne calculated position output by the glider.",
             "sensor_name": " ",
             "reference": "WGS84",
-            "coordinate_reference_frame": "urn:ogc:crs:EPSG::4326"
+            "coordinate_reference_frame": "urn:ogc:crs:EPSG::4326",
+            "accuracy": " ",
+            "precision": " ",
+            "resolution": " "
         },
         "status_flag": {
             "attrs": {
@@ -263,7 +295,10 @@
             "comment": "No values are interpolated.  All are from glider surfacing gps fixes.",
             "sensor_name": " ",
             "reference": "WGS84",
-            "coordinate_reference_frame": "urn:ogc:crs:EPSG::4326"
+            "coordinate_reference_frame": "urn:ogc:crs:EPSG::4326",
+            "accuracy": " ",
+            "precision": " ",
+            "resolution": " "
         },
         "status_flag": {
             "attrs": {
@@ -287,7 +322,10 @@
             "comment": "Longitude as a result of linear interpolation between surfacing fixes",
             "sensor_name": " ",
             "reference": "WGS84",
-            "coordinate_reference_frame": "urn:ogc:crs:EPSG::4326"
+            "coordinate_reference_frame": "urn:ogc:crs:EPSG::4326",
+            "accuracy": " ",
+            "precision": " ",
+            "resolution": " "
         },
         "status_flag": {
             "attrs": {
@@ -312,7 +350,8 @@
             "accuracy": " ",
             "precision": " ",
             "resolution": " ",
-            "sensor_name": " "
+            "sensor_name": " ",
+            "comment": ""
         },
         "status_flag": {
             "attrs": {
@@ -455,6 +494,8 @@
             "observation_type": "calculated",
             "platform": "platform",
             "instrument": "instrument_fluorometer",
+            "valid_min": 0,
+            "valid_max": 1,
             "accuracy": " ",
             "precision": " ",
             "resolution": " ",
@@ -477,6 +518,8 @@
             "observation_type": "calculated",
             "platform": "platform",
             "instrument": "instrument_dissolved_oxygen",
+            "valid_min": 0,
+            "valid_max": 250,
             "accuracy": " ",
             "precision": " ",
             "resolution": " ",
@@ -499,6 +542,8 @@
             "observation_type": "calculated",
             "platform": "platform",
             "instrument": "instrument_fluorometer",
+            "valid_min": 0,
+            "valid_max": 80,
             "accuracy": " ",
             "precision": " ",
             "resolution": " ",
@@ -515,12 +560,14 @@
         "type": "f8",
         "dimension": "time",
         "attrs": {
-            "units": "degrees",
+            "units": "radians",
             "standard_name": "platform_yaw_angle",
             "long_name": "Compass Heading",
             "observation_type": "calculated",
             "platform": "platform",
             "instrument": "instrument_compass",
+            "valid_min": 0,
+            "valid_max": 6.28317,
             "accuracy": " ",
             "precision": " ",
             "resolution": " ",
